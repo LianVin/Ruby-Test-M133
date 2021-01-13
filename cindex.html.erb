@@ -1,0 +1,37 @@
+<div class="container">
+  <table class="table table-hover">
+    <thead class="thead-light">
+    <tr>
+      <th>Titel</th>
+      <th>Dauer Insgesamt</th>
+      <th>Anzahl Sendungen</th>
+      <th>Sendungen</th>
+      <th colspan="5">Aktion</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @chanels.each do |c| %>
+      <tr>
+        <td><%= link_to c.title, chanel_path(c.id) %></td>
+        <td>
+          <%= c.broadcasts.sum(:duration) %> Min
+        </td>
+        <td>
+          <%= c.broadcasts.count %>
+        </td>
+        <td>
+          <% c.broadcasts.collect.each do |b| %>
+            <%= b.name + ", " %>
+          <% end %>
+        </td>
+        <td><%= link_to "Ändern", edit_chanel_path(c.id) %></td>
+        <td><%= link_to "Löschen", chanel_path(c.id), method: :delete,
+                        data: { confirm: "Sind Sie sicher?" } %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <h3>Sender Insgesamt: <%= @chanels.count %></h3>
+  <%= link_to "Neue Sendung erfassen", new_chanel_url %><br />
+  <%= link_to "Sendungen", broadcasts_path %>
+</div>

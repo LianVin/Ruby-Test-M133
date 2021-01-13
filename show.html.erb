@@ -1,0 +1,23 @@
+<div class="container">
+  <h2><%=@broadcast.name%></h2>
+  <table class="table">
+    <tr>
+    <tr>
+      <td>
+        <h4>Kanal:</h4>
+      </td>
+      <td>
+        <h5><%= link_to @broadcast.chanel.title, chanel_path(@broadcast.chanel.id)%></h5>
+      </td>
+    </tr>
+    <td>
+      <h4>Länge:</h4>
+    </td>
+    <td>
+      <h5>Min <%= @broadcast.duration%></h5>
+    </td>
+    </tr>
+  </table>
+  <br />
+  <%= link_to "Senderliste", broadcasts_url%>
+</div>

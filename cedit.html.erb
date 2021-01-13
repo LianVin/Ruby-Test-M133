@@ -1,0 +1,7 @@
+<div class="container">
+  <%= form_with model: @chanel, url: chanel_path do |f| %>
+    Titel:<%= f.text_field :title %>
+    <%= submit_tag "Kanal speichern"%>
+    <%= link_to "Abbrechen", chanels_path %>
+  <% end %>
+</div>

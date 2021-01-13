@@ -1,0 +1,31 @@
+<div class="container">
+  <h2><%=@chanel.title%></h2>
+  <table class="table">
+    <thead class="thead-light">
+    <tr>
+      <th>Sendung</th>
+      <th colspan="2">Dauer</th>
+    </tr>
+    </thead>
+      <% @chanel.broadcasts.collect.each do |b| %>
+          <tr>
+            <td>
+              <%= link_to b.name, broadcast_path(b.id) %>
+            </td>
+            <td>
+              <%= b.duration %> Min
+            </td>
+          </tr>
+      <% end %>
+    <tr>
+      <td>
+        <h3>TOTAL:</h3>
+      </td>
+      <td>
+        <h3><%= @chanel.broadcasts.sum(:duration) %> Min</h3>
+      </td>
+    </tr>
+  </table>
+  <br />
+  <%= link_to "Kanalliste", chanels_url%>
+</div>

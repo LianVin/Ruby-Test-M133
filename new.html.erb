@@ -1,0 +1,9 @@
+<div class="container">
+  <%= form_with model: @broadcast, url: broadcasts_path, local: true do |f| %>
+    Name:<%= f.text_field :name %><br />
+    Kanal:<%= f.collection_select :chanel_id, @chanels, :id, :title %><br />
+    Länge:<%= f.text_field :duration %><br />
+    <%= submit_tag "Sendung speichern"%>
+    <%= link_to "Abbrechen", broadcasts_path %>
+  <% end %>
+</div>
